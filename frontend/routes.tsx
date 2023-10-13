@@ -1,17 +1,29 @@
-import HelloWorldView from 'Frontend/views/helloworld/HelloWorldView.js';
-import MainLayout from 'Frontend/views/MainLayout.js';
-import { lazy } from 'react';
-import { createBrowserRouter, RouteObject } from 'react-router-dom';
-
-const AboutView = lazy(async () => import('Frontend/views/about/AboutView.js'));
+import MainLayout from "Frontend/views/MainLayout.js";
+import { createBrowserRouter, RouteObject } from "react-router-dom";
+import CreateSurveyView from "./views/survey/CreateSurveyView";
+import SurveyView from "./views/survey/SurveyView";
+import Wizard from "./views/wizard/Wizard";
 
 export const routes: RouteObject[] = [
   {
     element: <MainLayout />,
-    handle: { title: 'Main' },
+    handle: { title: "Main" },
     children: [
-      { path: '/', element: <HelloWorldView />, handle: { title: 'Hello World' } },
-      { path: '/about', element: <AboutView />, handle: { title: 'About' } },
+      {
+        path: "/",
+        element: <SurveyView />,
+        handle: { title: "Survey Home" },
+      },
+      {
+        path: "/survey",
+        element: <SurveyView />,
+        handle: { title: "Survey Home" },
+      },
+      {
+        path: "/new",
+        element: <CreateSurveyView />,
+        handle: { title: "Create New Survey" },
+      },
     ],
   },
 ];
